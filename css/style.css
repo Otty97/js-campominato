@@ -1,15 +1,43 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: grey;
   font-family: 'Ubuntu Mono', monospace;
+  background-image: url(img/filo-spinato.jpg);
+  background-size: cover;
 }
 
 header {
+  background-color: grey;
   border: double black 5px;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-header h1 {
-  text-align: center;
+header p {
   font-weight: bold;
-  font-size: 50px;
+  font-size: 80px;
   color: black;
+  width: auto;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.mina {
+  height: 70px;
+  width: 70px;
+}
+
+main {
+  margin-left: 50px;
+  margin-right: 50px;
 }
