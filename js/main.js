@@ -1,68 +1,55 @@
-// Raccolta Input
-var RANDOM_NUMBERS = 16;
-var MIN_BOUND = 1;
-var MAX_BOUND = 100;
-var ROUNDS = 84;
+//RACCOLTA INPUT
+var MAX_NUM = 100;
+var MIN_NUM = 1;
+var NUM_MINE = 16;
+var ROUND = 84;
+var level = //prompt("Scegli il livello, tra 0, 1 e 2");
 
+//Determinare Livello del GAME
+switch (level) {
 
-// Mines Generation
-var mines = [];
-
-while (mines.length < RANDOM_NUMBERS) {
-  var actualRandomNumber = Math.floor(Math.random()*((MAX_BOUND+1)-MIN_BOUND) + MIN_BOUND);
-   console.log(actualRandomNumber)
-  if (!isNumberInArray(actualRandomNumber, mines)) {
-    mines.push(actualRandomNumber);
-  }
-};
-
-
-// Determinare il livello del Gioco
-var difficulty = prompt("Segli la difficolta tra Facile,Medio,Difficile");
-var Facile = 0;
-var Medio = 1;
-var Difficile = 2;
-
-switch (difficulty) {
   case 0:
-    MAX_BOUND = 100;
+  MAX_NUM = 100;
     break;
   case 1:
-    MAX_BOUND = 80;
-    break;
+    MAX_NUM = 80;
+      break;
   case 2:
-    MAX_BOUND = 50;
-    break;
-}
-
-
-// Algoritmo del Gioco
-var hasWon = false;
-var isAlive = true;
-var userChoices = [];
-
-  //genero un ciclo while in quanto non so quanti giri dovrò eseguire
-while (!hasWon && isAlive) {
-  var actualUserChoice = parseInt(prompt("Inserisci numero tra" + MIN_BOUND + "-" + MAX_BOUND));
-
-  if (isNumberInArray(actualUserChoice, userChoices)) {
-    alert("HAI GIA' INSERITO IL NUMERO");
-  } else {
-    if (isNumberInArray(actualUserChoice, mines)) {
-      isAlive = false;
-    } else if (userChoices.length === ROUNDS) {
-      hasWon = true;
-    };
-    userChoices.push(actualUserChoice)
-  }
+  MAX_NUM = 50;
+      break;
 };
 
+//Generazione Mine (Array di numeri)
+var mine = [];
+console.log(mine);
 
-//Stampa degli Output --> Esito del Gioco
-if (hasWon && isAlive) {
-  document.getElementById('messaggio').innerHTML = "COMPLIMENTI HAI VINTO";
-} else {
-  document.getElementById('messaggio').innerHTML = "HAI PERSO";
+   //ciclo while che genera le mine
+while (mine.length < NUM_MINE){
+  var randomNumbers = Math.floor(Math.random() * ((MAX_NUM + 1) - MIN_NUM) + MIN_NUM);
+  if(!isInArray(randomNumbers, mine)){
+    mine.push(randomNumbers);
+  }
 }
 
-document.getElementById('attempt').innerHTML += userChoices.length;
+//Algoritmo del GAME
+var userChoices = [];
+var win = false;
+var isAlive = true;
+while (!win && isAlive){
+  var numUtente = //parseInt(prompt("Inserisci un numero tra " + MIN_NUM + " - " + MAX_NUM));
+  if(isInArray(numUtente, userChoices)){
+    alert("Hai già inserito questo numero");
+  }
+  else if(isInArray(numUtente, mine)){
+    isAlive = false;
+    alert("Hai beccato una mina."+"HAI PERSO")
+  }
+  else if(userChoices.length === ROUND){
+    win = true;
+    alert("Hai disinnescato tutte le mine nel campo"+"COMPLIMENTI HAI VINTO!")
+  }
+userChoices.push(numUtente);
+}
+
+//Stampa degli OUTPUT --> esito del GAME
+document.getElementById("result").innerHTML += userChoices.length;

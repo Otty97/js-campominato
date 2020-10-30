@@ -1,9 +1,10 @@
-//Definizione della funzione generale
-function isNumberInArray(num, numArr) {
+//Funzione Generale 
+function isInArray (num, numArr) {
+  var boolean = false;
   for (var i = 0; i < numArr.length; i++) {
-    if (num === numArr) {
-      return true;
+    if(numArr[i]===num){
+      var boolean = true;
     }
-    return false;
   }
+  return boolean;
 }
