@@ -3,7 +3,7 @@ var MAX_NUM = 100;
 var MIN_NUM = 1;
 var NUM_MINE = 16;
 var ROUND = 84;
-var level = //prompt("Scegli il livello, tra 0, 1 e 2");
+var level = prompt("Scegli il livello, tra 0, 1 e 2");
 
 //Determinare Livello del GAME
 switch (level) {
@@ -36,7 +36,7 @@ var userChoices = [];
 var win = false;
 var isAlive = true;
 while (!win && isAlive){
-  var numUtente = //parseInt(prompt("Inserisci un numero tra " + MIN_NUM + " - " + MAX_NUM));
+  var numUtente = parseInt(prompt("Inserisci un numero tra " + MIN_NUM + " - " + MAX_NUM));
   if(isInArray(numUtente, userChoices)){
     alert("Hai già inserito questo numero");
   }
